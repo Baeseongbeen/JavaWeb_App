@@ -11,8 +11,34 @@ package com.example.lib;
 
 public class MainClass {
     public static void main(String[] args){
-        Exam02();
 
+    }
+
+    private static void Exam4() {
+        // 어디에서 오버플로가 나올지 생각하는게 중요
+
+        int num_a = 120;
+        byte num_b = (byte)num_a;
+        System.out.println(num_b);
+
+        short num_c = 130;
+        int num_d = num_c;
+        System.out.println(num_d);
+
+        int num_e = 10;
+        float num_f = num_e;
+        System.out.println(num_f);
+
+        float num_g = 10.5f;
+        int num_h = (int)num_g;
+        System.out.println(num_h);
+    }
+
+    private static void Exam3() {
+        short a = 200;  // 1100 1000
+        byte b = (byte)a;
+        System.out.println(b);
+        // -> 오버플로
     }
 
     private static void Exam02() {
