@@ -2,9 +2,27 @@ package com.example.myjavaweb;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class ClassTest {
+    @Test
+    public void testLotto(){
+        Lotto lotto = new Lotto();
+        ArrayList<Integer> list = lotto.getLotto();
+
+        assertEquals(6, list.size());
+        System.out.println(list.toString());
+    }
+    @Test
+    public void testRandom(){
+        Random rand = new Random();
+        System.out.println(rand.nextInt(10));
+        System.out.println(Math.random() * 10 );
+    }
+
     @Test
     public void testStudent(){
         Student student = new Student("tester", "java");
