@@ -11,6 +11,18 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
+    public void testLeapYear(){
+        /// 1700 2020
+
+        assertEquals(false, isLeapYear(1700));
+
+    }
+
+    private boolean isLeapYear(int year) {
+        return false;
+    }
+
+    @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }

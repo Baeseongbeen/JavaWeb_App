@@ -12,6 +12,52 @@ package com.example.lib;
 public class MainClass {
     public static void main(String[] args){
 
+        String result = is369(33);
+        System.out.println(result);
+    }
+
+    private static void game369() {
+        for (int cnt = 0 ; cnt < 100;  cnt ++){
+            int i = cnt / 10;
+            int j = cnt % 10;
+
+            if (((i == 3) || (i == 6) || (i == 9))  && ((j == 3) || (j == 6) || (j == 9))){
+                System.out.print("*");
+            }else if ((i == 3) || (i == 6) || (i == 9)){
+                System.out.print("$");
+            }else if ((j == 3) || (j == 6) || (j == 9)){
+                System.out.print("#");
+            }else{
+                System.out.print(cnt);
+            }
+        }
+    }
+
+    private static String is369(int cnt){
+        int a = cnt / 10;
+        int b = cnt % 10;
+
+        if(a==0){
+            if (b % 3 == 0 && b != 0){
+                return "*";
+            }else {
+                return "";
+            }
+        }
+        if (b%3 == 0 && b != 0){
+            return "*" + is369(a);
+        }else {
+            return is369(a);
+        }
+
+    }
+    private static void checkYear() {
+        int year = 2400;
+
+        if ( (year % 4 == 0) && !(year % 100 == 0) || (year % 400 == 0))
+            System.out.println("윤년입니다 1");
+            else
+                System.out.println("윤년이 아닙니다.0");
     }
 
     private static void Exam4() {
