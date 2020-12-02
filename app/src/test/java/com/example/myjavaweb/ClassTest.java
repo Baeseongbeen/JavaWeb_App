@@ -2,12 +2,22 @@ package com.example.myjavaweb;
 
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class ClassTest {
+    @Test
+    public void testSleepTimeAVG() throws ParseException {
+//        12:00 1:00 11:00 1:00 3:00 3:00 4:00 12:00 1:13
+        SleepTime st = new SleepTime();
+        st.getDate();
+
+    }
+
     @Test
     public void testLotto(){
         Lotto lotto = new Lotto();
