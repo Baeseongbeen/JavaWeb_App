@@ -40,5 +40,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button web = findViewById(R.id.btnWeb);
+        web.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kakaocorp.com"));
+                startActivity(intent);
+            }
+        });
+
     }
 }
