@@ -1,6 +1,7 @@
 package com.example.myjavaweb;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class SampleAdapter extends BaseAdapter {
 
         TextView tv = convertView.findViewById(R.id.tvItem);
         tv.setText(items.get(position));
-
+        tv.setBackgroundColor(Color.argb(255, 0, 0, 0));
         return convertView;
     }
 }

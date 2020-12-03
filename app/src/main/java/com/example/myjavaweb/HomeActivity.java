@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class HomeActivity extends AppCompatActivity {
+
+    private Map<String, Class<?>> buttons = new LinkedHashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,41 +25,25 @@ public class HomeActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
+        buttons.put("Main", MainActivity.class);
+        buttons.put("Main2", MainActivity2.class);
+        buttons.put("Photo", homework01.class);
+        buttons.put("화면넘기기-로그인", LoginActivity.class);
+        buttons.put("버튼배치", Mission01Activity.class);
+        buttons.put("사진체인저", Mission04Activity.class);
 
-        Button btn1 = new Button(this);
-        btn1.setText("화면넘기기-로그인");
-        btn1.setLayoutParams(params);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        layout.addView(btn1);
-
-        findViewById(R.id.btnMain).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.btnMain2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MainActivity2.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.btnPhoto).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, homework01.class);
-                startActivity(intent);
-            }
-        });
+        for (String key : buttons.keySet()){
+            Button btn = new Button(this);
+            btn.setText(key);
+            btn.setLayoutParams(params);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, buttons.get(key));
+                    startActivity(intent);
+                }
+            });
+            layout.addView(btn);
+        }
     }
 }
