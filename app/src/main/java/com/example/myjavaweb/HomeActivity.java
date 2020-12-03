@@ -24,6 +24,13 @@ public class HomeActivity extends AppCompatActivity {
         Button btn1 = new Button(this);
         btn1.setText("화면넘기기-로그인");
         btn1.setLayoutParams(params);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         layout.addView(btn1);
 
         findViewById(R.id.btnMain).setOnClickListener(new View.OnClickListener() {
