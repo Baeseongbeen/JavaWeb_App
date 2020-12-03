@@ -14,7 +14,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
 
     List<String> items = new ArrayList<>();
-    ArrayAdapter<String> adapter;
+    SampleAdapter adapter;
     EditText etmsg;
 
     @Override
@@ -24,10 +24,13 @@ public class ListActivity extends AppCompatActivity {
 
         etmsg = findViewById(R.id.etMsgEx);
 
-        adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, items);
+
+        adapter = new SampleAdapter(this,
+                R.layout.list_item, items);
         ListView lv = findViewById(R.id.lvMsg);
         lv.setAdapter(adapter);
+
+
 
 
         items.add("채팅");
