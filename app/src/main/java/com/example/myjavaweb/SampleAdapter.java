@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class SampleAdapter extends BaseAdapter {
@@ -46,7 +48,18 @@ public class SampleAdapter extends BaseAdapter {
 
         TextView tv = convertView.findViewById(R.id.tvItem);
         tv.setText(items.get(position));
-        tv.setBackgroundColor(Color.argb(255, 0, 0, 0));
+        if(position %2 == 0){
+            tv.setBackgroundColor(Color.argb(255, 100, 100, 100));
+            tv.setTextColor(Color.WHITE);
+        }
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd hh:mm:ss");
+        String time = simpleDateFormat.format(date);
+        TextView tvTime = convertView.findViewById(R.id.tvTime);
+        tvTime.setText(time);
+
         return convertView;
     }
 }

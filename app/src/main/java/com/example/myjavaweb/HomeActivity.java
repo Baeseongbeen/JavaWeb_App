@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,6 +26,11 @@ public class HomeActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        int size = Math.round(20* dm.density);
+        params.topMargin = size;
+
+
         buttons.put("Main", MainActivity.class);
         buttons.put("Main2", MainActivity2.class);
         buttons.put("Photo", homework01.class);
