@@ -10,26 +10,41 @@
         android:id="@+id/btnOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginBottom="16dp"
+        android:text="확인"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="176dp" />
+        tools:layout_editor_absoluteX="91dp" />
 
-    <TextView
-        android:id="@+id/textView5"
+    <Button
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="JoinActivity"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="149dp" />
+        android:layout_marginBottom="16dp"
+        android:text="취소"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="208dp" />
 
     <EditText
         android:id="@+id/etID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="368dp"
         android:ems="10"
+        android:hint="아이디"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/btnOK"
-        tools:layout_editor_absoluteX="100dp" />
+        tools:layout_editor_absoluteX="91dp" />
+
+    <EditText
+        android:id="@+id/etPW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="292dp"
+        android:ems="10"
+        android:hint="패스워드"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/btnOK"
+        tools:layout_editor_absoluteX="91dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

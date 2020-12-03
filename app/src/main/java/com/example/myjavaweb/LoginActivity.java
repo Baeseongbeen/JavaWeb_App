@@ -21,10 +21,21 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
                 intent.putExtra("id", "tester");
                 startActivityForResult(intent, 101);
-             }
+            }
         });
+        }
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == 101 && resultCode == RESULT_OK ) {
+                Toast.makeText(getApplicationContext(), data.getStringExtra("result"),
+                        Toast.LENGTH_LONG).show();
+            } else{
+                Toast.makeText(getApplicationContext(), "아이디와 패스워드가 틀립니다.",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
 
 
 
     }
-}
