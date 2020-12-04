@@ -26,6 +26,17 @@ public class ChatActivity extends AppCompatActivity {
     List<ChatItem> items = new ArrayList<>();
     ChatAdapter adapter;
     String nick = "";
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg){
+            String addr = "http://wik.iptime.org:8080/cmsgs/list/0.json";
+            AsyncDownThread thread = new AsyncDownThread(addr, getChatMsgHandler);
+            thread.start();
+
+            mHandler.sendEmptyMessageDelayed(0, 3000);
+        }
+    };
     private Handler getChatMsgHandler = new Handler(){
 
         @Override
@@ -78,5 +89,17 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mHandler.sendEmptyMessage(0);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mHandler.removeMessages(0);
     }
 }
