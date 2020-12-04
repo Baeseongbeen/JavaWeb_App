@@ -64,6 +64,13 @@ public class ChatActivity extends AppCompatActivity {
         }
     };
 
+    private Handler idleHandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +87,11 @@ public class ChatActivity extends AppCompatActivity {
         findViewById(R.id.btnChatting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String addr = "http://wik.iptime.org:8080/cmsgs/list/0.json";
+//                String addr = String.format("%s/cmsgs/list/%d.json", host, lastid+1);
+                String msg = et.getText().toString().trim();
+                if(msg.equals("")) return;
+
+                String addr = String.format("%s/cmsgs/%s/%s", host, nick, msg);
                 AsyncDownThread thread = new AsyncDownThread(addr, getChatMsgHandler);
                 thread.start();
 
