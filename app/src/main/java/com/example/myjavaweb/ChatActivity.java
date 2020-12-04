@@ -1,8 +1,11 @@
 package com.example.myjavaweb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +22,15 @@ public class ChatActivity extends AppCompatActivity {
     List<ChatItem> items = new ArrayList<>();
     ChatAdapter adapter;
     String nick = "";
+    private Handler getChatMsgHandler = new Handler(){
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String str = (String) msg.obj;
+            items.add(new ChatItem(str, "") );
+            adapter.notifyDataSetChanged();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +48,17 @@ public class ChatActivity extends AppCompatActivity {
         findViewById(R.id.btnChatting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String addr = "http://wik.iptime.org:8080/cmsgs/list/0.json";
+                AsyncDownThread thread = new AsyncDownThread(addr, getChatMsgHandler);
+                thread.start();
 
-                String msg = et.getText().toString().trim();
-                if (msg.equals("")) return;
-                items.add(new ChatItem("", msg) );
-                adapter.notifyDataSetChanged();
-                et.setText("");
+//                String msg = et.getText().toString().trim();
+//                if (msg.equals("")) return;
+//                items.add(new ChatItem("", msg) );
+//                adapter.notifyDataSetChanged();
+//                et.setText("");
             }
         });
-//        EditText et = findViewById(R.id.etChattingMsg);
-//        Button bt = findViewById(R.id.btnChatting);
-//        TextView tv = findViewById(R.id.lvTv);
 
-//        bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                tv.setText((CharSequence) et);
-
-//            }
-//        });
     }
 }
