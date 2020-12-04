@@ -14,6 +14,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +30,22 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         public void handleMessage(@NonNull Message msg) {
-            String str = (String) msg.obj;
-            items.add(new ChatItem(str, "") );
+            String json = (String) msg.obj;
+            try {
+                JSONArray ja = new JSONArray(json);
+                for (int i = 0; i < ja.length(); i++){
+                    JSONObject jo = ja.getJSONObject(i);
+                    String nickname = jo.getString("user_nickname");
+                    String usermsg = jo.getString("user_msg");
+                    if ( nick.equals(nickname))
+                        items.add(new ChatItem("", usermsg) );
+                    else
+                        items.add(new ChatItem(usermsg, "") );
+                }
+            }catch(JSONException e){
+                e.printStackTrace();
+            }
+
             adapter.notifyDataSetChanged();
         }
     };
