@@ -12,21 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyJavaWeb">
-        <activity android:name=".ChatActivity">
+        <activity android:name=".ChatLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListActivity">
+        <activity android:name=".ChatActivity">
 
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".Mission04Activity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".homework01"></activity>
+        <activity android:name=".homework01" />
         <activity android:name=".Mission02Activity3" />
         <activity android:name=".Mission01Activity" />
         <activity android:name=".RechatActivity" />
