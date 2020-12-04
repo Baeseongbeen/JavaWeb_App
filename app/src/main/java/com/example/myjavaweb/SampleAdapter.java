@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -46,19 +48,24 @@ public class SampleAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, parent, false);
         }
 
-        TextView tv = convertView.findViewById(R.id.tvItem);
-        tv.setText(items.get(position));
+        TextView tvItem = convertView.findViewById(R.id.tvItem);
+        TextView tvTime = convertView.findViewById(R.id.tvTime);
+        ConstraintLayout bgLayout = convertView.findViewById(R.id.bgLayout);
+
         if(position %2 == 0){
-            tv.setBackgroundColor(Color.argb(255, 100, 100, 100));
-            tv.setTextColor(Color.WHITE);
+            tvTime.setText( items.get(position) );
+            bgLayout.setBackgroundColor(Color.argb(255,100,100,100));
+            //            tv.setBackgroundColor(Color.argb(255, 100, 100, 100));
+//            tv.setTextColor(Color.WHITE);
+        }else{
+            tvItem.setText(items.get(position));
         }
 
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd hh:mm:ss");
-        String time = simpleDateFormat.format(date);
-        TextView tvTime = convertView.findViewById(R.id.tvTime);
-        tvTime.setText(time);
+//        long now = System.currentTimeMillis();
+//        Date date = new Date(now);
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd hh:mm:ss");
+//        String time = simpleDateFormat.format(date);
+//        tvTime.setText(time);
 
         return convertView;
     }
