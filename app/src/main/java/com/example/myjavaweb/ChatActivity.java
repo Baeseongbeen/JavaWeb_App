@@ -26,11 +26,13 @@ public class ChatActivity extends AppCompatActivity {
     List<ChatItem> items = new ArrayList<>();
     ChatAdapter adapter;
     String nick = "";
+    int lastid = 0;
+    String host = "http://wik.iptime.org:8080";
 
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg){
-            String addr = "http://wik.iptime.org:8080/cmsgs/list/0.json";
+            String addr = String.format("%s/cmsgs/list/%d.json", host, lastid+1);
             AsyncDownThread thread = new AsyncDownThread(addr, getChatMsgHandler);
             thread.start();
 
@@ -48,6 +50,7 @@ public class ChatActivity extends AppCompatActivity {
                     JSONObject jo = ja.getJSONObject(i);
                     String nickname = jo.getString("user_nickname");
                     String usermsg = jo.getString("user_msg");
+                    lastid = jo.getInt("id");
                     if ( nick.equals(nickname))
                         items.add(new ChatItem("", usermsg) );
                     else
